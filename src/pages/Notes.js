@@ -10,18 +10,21 @@ export const Notes = () => {
   const [noteToUpdate, setNoteToUpdate] = useState({});
 
   useEffect(() => {
-    setUser(user);
-    fetch("http://localhost:4000/api/v1/note/getnotes", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${user.token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((notes) => setNotes(notes.notes))
-      .catch((err) => console.log(err));
-  }, [notes]);
+    function getAndSetNotesFromDB() {
+      setUser(user);
+      fetch("http://localhost:4000/api/v1/note/getnotes", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${user.token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((notes) => setNotes(notes.notes))
+        .catch((err) => console.log(err));
+    }
+    getAndSetNotesFromDB();
+  }, []);
 
   return (
     <>
