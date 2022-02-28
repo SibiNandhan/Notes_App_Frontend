@@ -31,16 +31,19 @@ export const AddNote = ({ noteToUpdate, setNoteToUpdate }) => {
       });
     }
 
-    await fetch("http://localhost:4000/api/v1/note/createnote", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${user.token}`,
-      },
-      body: JSON.stringify({
-        ...createNote,
-      }),
-    })
+    await fetch(
+      "https://notes--app--backend.herokuapp.com/api/v1/note/createnote",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify({
+          ...createNote,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         createNote.notesContent = "";
@@ -81,16 +84,19 @@ export const AddNote = ({ noteToUpdate, setNoteToUpdate }) => {
       });
     }
 
-    await fetch("http://localhost:4000/api/v1/note/updatenote", {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${user.token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...createNote,
-      }),
-    })
+    await fetch(
+      "https://notes--app--backend.herokuapp.com/api/v1/note/updatenote",
+      {
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...createNote,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         if (res.status === "success") {

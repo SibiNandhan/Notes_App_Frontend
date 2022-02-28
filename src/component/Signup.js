@@ -47,15 +47,18 @@ export const Signup = () => {
       });
     }
 
-    const UserSignUp = await fetch("http://localhost:4000/api/v1/user/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...details,
-      }),
-    }).then((res) => res.json());
+    const UserSignUp = await fetch(
+      "https://notes--app--backend.herokuapp.com/api/v1/user/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...details,
+        }),
+      }
+    ).then((res) => res.json());
 
     if (UserSignUp.status !== "success") {
       return toast({

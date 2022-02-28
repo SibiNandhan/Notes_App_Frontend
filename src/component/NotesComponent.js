@@ -8,16 +8,19 @@ export const NotesComponent = ({ note, setNoteToUpdate, noteToUpdate }) => {
   const toast = useToast();
 
   const deleteHandler = async () => {
-    await fetch("http://localhost:4000/api/v1/note/deletenote", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${user.token}`,
-      },
-      body: JSON.stringify({
-        noteId: _id,
-      }),
-    })
+    await fetch(
+      "https://notes--app--backend.herokuapp.com/api/v1/note/deletenote",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify({
+          noteId: _id,
+        }),
+      }
+    )
       .then(() => {
         setNotes(notes.filter((note) => note._id !== _id));
         return toast({

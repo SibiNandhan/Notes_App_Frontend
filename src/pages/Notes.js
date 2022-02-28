@@ -12,7 +12,7 @@ export const Notes = () => {
   useEffect(() => {
     function getAndSetNotesFromDB() {
       setUser(user);
-      fetch("http://localhost:4000/api/v1/note/getnotes", {
+      fetch("https://notes--app--backend.herokuapp.com/api/v1/note/getnotes", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const Notes = () => {
         .catch((err) => console.log(err));
     }
     getAndSetNotesFromDB();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [notes]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

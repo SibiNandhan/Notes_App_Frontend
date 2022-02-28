@@ -18,15 +18,18 @@ export const Login = () => {
     setDetails({ ...details, [e.target.name]: e.target.value });
   };
   const submitHandler = async () => {
-    const UserLogin = await fetch("http://localhost:4000/api/v1/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...details,
-      }),
-    }).then((res) => res.json());
+    const UserLogin = await fetch(
+      "https://notes--app--backend.herokuapp.com/api/v1/user/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...details,
+        }),
+      }
+    ).then((res) => res.json());
     if (UserLogin.status !== "success") {
       return toast({
         title: `${UserLogin.error}`,
