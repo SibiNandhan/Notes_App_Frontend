@@ -24,7 +24,7 @@ export const Notes = () => {
         .catch((err) => console.log(err));
     }
     getAndSetNotesFromDB();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
