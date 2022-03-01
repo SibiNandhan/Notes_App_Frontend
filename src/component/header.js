@@ -1,10 +1,14 @@
 import { Box, Button, Stack, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 export const Header = () => {
   const history = useHistory();
-  const [historyState] = useState(history.location.pathname);
+  const [historyState, setHistory] = useState(history.location.pathname);
+
+  useEffect(() => {
+    setHistory(history.location.pathname);
+  }, [history.location.pathname]);
 
   const logOutHandler = () => {
     localStorage.removeItem("Notes_User");
